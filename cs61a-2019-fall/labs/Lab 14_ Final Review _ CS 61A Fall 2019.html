@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)https://cs61a.org/lab/lab14/ -->
+<html lang="en" style="overflow: visible;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="CS 61A: Structure and Interpretation of Computer Programs">
+    <meta name="keywords" content="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS">
+    <meta name="author" content="John DeNero">
+    
+    <meta name="viewport" content="width=device-width">
+
+    <script src="./Lab 14_ Final Review _ CS 61A Fall 2019_files/jquery.min.js.下载"></script>
+    <script src="./Lab 14_ Final Review _ CS 61A Fall 2019_files/bootstrap.min.js.下载"></script>
+    <script src="./Lab 14_ Final Review _ CS 61A Fall 2019_files/highlight.min.js.下载"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="./Lab 14_ Final Review _ CS 61A Fall 2019_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Lab 14_ Final Review _ CS 61A Fall 2019_files/css">
+    <link rel="stylesheet" href="./Lab 14_ Final Review _ CS 61A Fall 2019_files/style.css">
+    <link rel="stylesheet" href="./Lab 14_ Final Review _ CS 61A Fall 2019_files/mono-blue.css">
+    <link rel="icon" href="https://cs61a.org/assets/images/favicon.ico">
+
+    
+
+    <title>
+Lab 14: Final Review | CS 61A Fall 2019
+</title>
+  <script charset="utf-8" src="chrome-extension://jgphnjokjhjlcnnajmfjlacjnjkhleah/js/btype.js"></script><script type="text/javascript" charset="utf-8" src="chrome-extension://jgphnjokjhjlcnnajmfjlacjnjkhleah/js/chrome.js"></script></head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://cs61a.org/">
+            <img style="max-width:60px; margin-top: -20px;" class="logo" src="./Lab 14_ Final Review _ CS 61A Fall 2019_files/logo.png">
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://cs61a.org/weekly.html">Weekly Schedule</a></li>
+            <li><a href="https://cs61a.org/office-hours.html">Office Hours</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="https://cs61a.org/lab/lab14/#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Staff
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a href="https://cs61a.org/instructor.html">Instructors</a></li>
+                <li><a href="https://cs61a.org/TAs.html">TAs</a></li>
+                <li><a href="https://cs61a.org/tutors.html">Tutors</a></li>
+                <li><a href="https://cs61a.org/academic-interns.html">Academic Interns</a></li>
+              </ul>
+            </li>
+            <li><a href="https://cs61a.org/resources.html">Resources</a></li>
+            <li><a href="https://cs61a.org/articles/about.html">Syllabus</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2019/cs61a" target="_blank">Piazza</a></li>
+            <li><a href="https://cs61a.org/extra.html">Extra</a></li>
+            <!-- <li><a href="https://scheme.cs61a.org">Scheme</a></li> -->
+            <!-- <li><a href="https://sql.cs61a.org">SQL</a></li> -->
+            <li><a href="https://code.cs61a.org/">Code</a></li>
+            <li><a href="http://tutor.cs61a.org/">Tutor</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class="row">
+  <div class="col-md-9 __reader_view_article_wrap_7883421513225641__">
+    <header>
+      <h1>
+        
+Lab 14: Final Review
+
+        
+        
+        <ul class="inline-block list-inline">
+          <li><a href="https://cs61a.org/lab/lab14/lab14.zip" class="label label-outline">lab14.zip</a></li>
+        </ul>
+        
+        
+      </h1>
+    </header>
+    
+
+<p><i>Due by 11:59pm on Friday, December 6.</i></p>
+
+
+
+
+<h2 id="starter-files">Starter Files</h2>
+
+<p>Download <a href="https://cs61a.org/lab/lab14/lab14.zip">lab14.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the <a href="https://cs61a.org/lab/lab14/ok">Ok</a> autograder.</p>
+
+
+<h2 id="submission">Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab with
+<code>python3 ok --submit</code>. You may submit more than once before the
+deadline; only the final submission will be graded.
+Check that you have successfully submitted your code on
+<a href="https://okpy.org/">okpy.org</a>.</p>
+
+<ul>
+  <li>To receive credit for this lab, you must complete Questions 1-3 in lab14.py and lab14.scm and submit through OK.</li>
+  <li>Questions 4-6 are considered extra practice. They can be found in the lab14<em>extra.py and lab14</em>extra.scm files. It is recommended that you complete them on your own time.</li>
+</ul>
+
+
+
+    
+<h1 id="required-questions">Required Questions</h1>
+
+
+
+<h2 id="trees">Trees</h2>
+
+<p>For a quick refresher on Trees, see <a href="https://cs61a.org/lab/lab05">Lab 05</a>.</p>
+
+<blockquote><p>This question is to be done in <code>lab14.py</code>.</p></blockquote>
+
+<h3 class="question" id="q1">Q1: Prune Min</h3>
+
+<p>Write a function that prunes a <code>Tree</code> <code>t</code> mutatively. <code>t</code> and its branches
+always have zero or two branches. For the trees with two branches, reduce the
+number of branches from two to one by keeping the branch that has the smaller
+label value. Do nothing with trees with zero branches.</p>
+
+<p>Prune the tree from the bottom up. The result should be a linear tree.</p>
+
+
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prune_min</span><span class="hljs-params">(t)</span>:</span>
+    <span class="hljs-string">"""Prune the tree mutatively from the bottom up.
+
+    &gt;&gt;&gt; t1 = Tree(6)
+    &gt;&gt;&gt; prune_min(t1)
+    &gt;&gt;&gt; t1
+    Tree(6)
+    &gt;&gt;&gt; t2 = Tree(6, [Tree(3), Tree(4)])
+    &gt;&gt;&gt; prune_min(t2)
+    &gt;&gt;&gt; t2
+    Tree(6, [Tree(3)])
+    &gt;&gt;&gt; t3 = Tree(6, [Tree(3, [Tree(1), Tree(2)]), Tree(5, [Tree(3), Tree(4)])])
+    &gt;&gt;&gt; prune_min(t3)
+    &gt;&gt;&gt; t3
+    Tree(6, [Tree(3, [Tree(1)])])
+    """</span>
+<div class="alt solution-1">    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</div><div class="solution solution-1">    <span class="hljs-keyword">if</span> t.branches == []:
+        <span class="hljs-keyword">return</span>
+    prune_min(t.branches[<span class="hljs-number">0</span>])
+    prune_min(t.branches[<span class="hljs-number">1</span>])
+    <span class="hljs-keyword">if</span> (t.branches[<span class="hljs-number">0</span>].label &gt; t.branches[<span class="hljs-number">1</span>].label):
+        t.branches.pop(<span class="hljs-number">0</span>)
+    <span class="hljs-keyword">else</span>:
+        t.branches.pop(<span class="hljs-number">1</span>)</div></code></pre>
+
+
+        <button id="solution-1" class="btn btn-outline btn-lg solutiontoggle solution">
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q prune_min</code></pre>
+
+
+<h2 id="scheme">Scheme</h2>
+
+<p>For a quick refresher on Scheme, see <a href="https://cs61a.org/lab/lab09">Lab 9</a>.</p>
+
+<blockquote><p>This question is to be done in <code>lab14.scm</code>.</p></blockquote>
+
+<h3 class="question" id="q2">Q2: Compose All</h3>
+
+<p>Implement <code>compose-all</code>, which takes a list of one-argument functions and
+returns a one-argument function that applies each function in that list in turn
+to its argument. For example, if <code>func</code> is the result of calling <code>compose-all</code>
+on a list of functions <code>(f g h)</code>, then <code>(func x)</code> should be equivalent to the
+result of calling <code>(h (g (f x)))</code>.</p>
+
+<pre><code class="hljs shell"><span class="hljs-meta">scm&gt;</span><span class="bash"> (define (square x) (* x x))</span>
+square
+<span class="hljs-meta">scm&gt;</span><span class="bash"> (define (add-one x) (+ x 1))</span>
+add-one
+<span class="hljs-meta">scm&gt;</span><span class="bash"> (define (double x) (* x 2))</span>
+double
+<span class="hljs-meta">scm&gt;</span><span class="bash"> (define composed (compose-all (list double square add-one)))</span>
+composed
+<span class="hljs-meta">scm&gt;</span><span class="bash"> (composed 1)</span>
+5
+<span class="hljs-meta">scm&gt;</span><span class="bash"> (composed 2)</span>
+17</code></pre>
+
+
+
+<pre><code class="hljs makefile">(<span class="hljs-keyword">define</span> (compose-all funcs)
+<div class="alt solution-2">  'YOUR-CODE-HERE
+</div><div class="solution solution-2">  (lambda (x)
+    (if (null? funcs)
+        x
+        ((compose-all (cdr funcs)) ((car funcs) x))))</div>)</code></pre>
+
+
+        <button id="solution-2" class="btn btn-outline btn-lg solutiontoggle solution">
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q compose-all</code></pre>
+
+
+<h2 id="streams">Streams</h2>
+
+<p>For a quick refresher on streams, see <a href="https://cs61a.org/disc/disc11.pdf">Discussion 11</a>.</p>
+
+<blockquote><p>This question is to be done in <code>lab14_extra.scm</code>.</p></blockquote>
+
+<h3 class="question" id="q3">Q3: Cycles</h3>
+
+<p>In Scheme, it's possible to have a stream with cycles. That is, a stream may
+contain itself as part of the stream definition.</p>
+
+<pre><code class="hljs shell"><span class="hljs-meta">scm&gt;</span><span class="bash"> (define s (cons-stream 1 (cons-stream 2 s)))</span>
+<span class="hljs-meta">scm&gt;</span><span class="bash"> (car s)</span>
+1
+<span class="hljs-meta">scm&gt;</span><span class="bash"> (car (cdr-stream (cdr-stream s)))</span>
+1
+<span class="hljs-meta">scm&gt;</span><span class="bash"> (eq? (cdr-stream (cdr-stream s)) s)</span>
+<span class="hljs-meta">#</span><span class="bash">t</span></code></pre>
+
+<p>Implement <code>has-cycle?</code>, which returns whether a stream contains a cycle.  You
+may assume that the input is either a stream of some unknown finite length, or
+is one that contains a cycle. You should implement and use the <code>contains?</code>
+procedure in your solution. We have provided a skeleton for <code>has-cycle?</code>; your
+solution must fit on the lines provided.</p>
+
+<blockquote><p><em>Hint:</em> A stream has a cycle if you see the same pair object more than once.
+The built-in procedure <code>eq?</code> may be used to check if two expressions evaluate
+to the same object in memory.</p>
+
+<pre><code class="hljs shell"><span class="hljs-meta">  scm&gt;</span><span class="bash"> (define lst1 <span class="hljs-string">'(1 2 3))</span></span>
+  lst1
+<span class="hljs-meta">  scm&gt;</span><span class="bash"><span class="hljs-string"> (define lst2 lst1)</span></span>
+  lst2
+<span class="hljs-meta">  scm&gt;</span><span class="bash"><span class="hljs-string"> (define lst3 '</span>(1 2 3))</span>
+  lst3
+<span class="hljs-meta">  scm&gt;</span><span class="bash"> (eq? lst1 lst2)</span>
+<span class="hljs-meta">  #</span><span class="bash">t</span>
+<span class="hljs-meta">  scm&gt;</span><span class="bash"> (eq? lst1 lst3)</span>
+<span class="hljs-meta">  #</span><span class="bash">f</span></code></pre></blockquote>
+
+
+
+<pre><code class="hljs markdown">(define (has-cycle? s)
+<div class="alt solution-3">  (define (pair-tracker seen-so-far curr)
+</div><div class="solution solution-3">  (define (pair-tracker seen-so-far curr)</div><div class="alt solution-3">    (cond (<span class="hljs-strong">_____</span><span class="hljs-strong">_____</span><span class="hljs-strong">_____</span><span class="hljs-strong">__ __</span><span class="hljs-strong">_____</span><span class="hljs-strong">_____</span>)
+</div><div class="solution solution-3"><span class="hljs-code">    (cond ((null? curr) #f)</span></div><div class="alt solution-3"><span class="hljs-code">          (_________________ ____________)</span>
+</div><div class="solution solution-3"><span class="hljs-code">          ((contains? seen-so-far curr) #t)</span></div><div class="alt solution-3"><span class="hljs-code">          (else _________________________))</span>
+</div><div class="solution solution-3"><span class="hljs-code">          (else (pair-tracker (cons curr seen-so-far) (cdr-stream curr))))</span></div><span class="hljs-code">    )</span>
+<div class="alt solution-3">  <span class="hljs-strong">_____</span><span class="hljs-strong">_____</span><span class="hljs-strong">_____</span><span class="hljs-strong">_____</span><span class="hljs-strong">_____</span><span class="hljs-strong">_____</span>
+</div><div class="solution solution-3">  (pair-tracker nil s)</div>)
+
+(define (contains? lst s)
+<div class="alt solution-3">  'YOUR-CODE-HERE
+</div><div class="solution solution-3">  (cond ((null? lst) #f)
+<span class="hljs-code">        ((eq? s (car lst)) #t)</span>
+<span class="hljs-code">        (else (contains? (cdr lst) s)))</span></div><span class="hljs-code">)</span></code></pre>
+
+
+        <button id="solution-3" class="btn btn-outline btn-lg solutiontoggle solution">
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q has-cycle</code></pre>
+<!-- 
+<explanation>
+
+<p><strong>Main idea:</strong> we will go through each item in stream. If we ever encounter the
+same stream again, we know we've detected a cycle. Hitting the end of the stream
+without detecting any cycles means there's no cycles.</p>
+
+<p>As noted in the hint, we'll use <code>eq?</code> to detect if two streams are the same (the
+<code>contains?</code> function is just a simple helper that works for anything, not just
+streams!). We'll also keep track of the streams we've seen so far in a list (so
+a list of streams).</p>
+
+</explanation> -->
+
+<!-- **Extra question**: *This question is not worth extra credit and is
+entirely optional.*
+
+Implement <code>has&#x2d;cycle&#x2d;constant</code> with only <a href="http://composingprograms.com/pages/28-efficiency.html#growth-categories">constant space</a>. The solution is
+short (fewer than 20 lines of code), but requires a clever idea. Try to discover
+the solution yourself before asking around:
+
+We don't directly test if your solution uses constant space, but it will
+likely timeout if you do not use constant space.
+
+
+
+<pre><code>(define (has&#x2d;cycle&#x2d;constant s)
+<div class="alt solution-4">  'YOUR-CODE-HERE
+</div><div class="solution solution-4">&#x20;&#x20;&#x28;&#x6c;&#x65;&#x74;&#x20;&#x28;&#x28;&#x73;&#x6c;&#x6f;&#x77;&#x20;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x66;&#x61;&#x73;&#x74;&#x20;&#x28;&#x63;&#x64;&#x72;&#x2d;&#x73;&#x74;&#x72;&#x65;&#x61;&#x6d;&#x20;&#x73;&#x29;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x63;&#x79;&#x63;&#x6c;&#x65;&#x2d;&#x73;&#x74;&#x65;&#x70;&#x70;&#x65;&#x72;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x20;&#x66;&#x61;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x29;</div>)
+<div class="solution solution-4">&#x28;&#x64;&#x65;&#x66;&#x69;&#x6e;&#x65;&#x20;&#x28;&#x63;&#x79;&#x63;&#x6c;&#x65;&#x2d;&#x73;&#x74;&#x65;&#x70;&#x70;&#x65;&#x72;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x20;&#x66;&#x61;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x28;&#x63;&#x6f;&#x6e;&#x64;&#x20;&#x28;&#x28;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x75;&#x6c;&#x6c;&#x3f;&#x20;&#x66;&#x61;&#x73;&#x74;&#x29;&#x20;&#x28;&#x6e;&#x75;&#x6c;&#x6c;&#x3f;&#x20;&#x28;&#x63;&#x64;&#x72;&#x2d;&#x73;&#x74;&#x72;&#x65;&#x61;&#x6d;&#x20;&#x66;&#x61;&#x73;&#x74;&#x29;&#x29;&#x29;&#x20;&#x23;&#x66;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x28;&#x65;&#x71;&#x3f;&#x20;&#x66;&#x61;&#x73;&#x74;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x29;&#x20;&#x23;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x65;&#x6c;&#x73;&#x65;&#x20;&#x28;&#x63;&#x79;&#x63;&#x6c;&#x65;&#x2d;&#x73;&#x74;&#x65;&#x70;&#x70;&#x65;&#x72;&#x20;&#x28;&#x63;&#x64;&#x72;&#x2d;&#x73;&#x74;&#x72;&#x65;&#x61;&#x6d;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x29;&#x20;&#x28;&#x63;&#x64;&#x72;&#x2d;&#x73;&#x74;&#x72;&#x65;&#x61;&#x6d;&#x20;&#x28;&#x63;&#x64;&#x72;&#x2d;&#x73;&#x74;&#x72;&#x65;&#x61;&#x6d;&#x20;&#x66;&#x61;&#x73;&#x74;&#x29;&#x29;&#x29;&#x29;&#xa;&#x20;&#x20;&#x29;&#xa;&#x29;</div></code></pre>
+
+
+        <button id='solution-4' class='btn btn-outline btn-lg solutiontoggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q has-cycle-constant>
+python3 ok -q --</code></pre>
+
+<!-- <explanation>
+
+<p>First, let's discuss why the previous solution isn't constant space. For a
+stream that has no cycle, we'll end up storing every single point in the stream
+in the list of streams, so it'll end up using <strong>linear</strong> space. It should be
+clear that simply storing a bunch of streams isn't going to work if we want
+<strong>constant</strong> space.</p>
+
+<p><strong>Main idea:</strong> We'll track two positions in the stream, a tortoise (slow) and a
+hare (fast). The tortoise moves slowly (and steadily, and also doesn't win the
+race in our story), and the hare moves quickly.</p>
+
+<p>We start the tortoise right before the hare. The tortoise will advance one item
+at a time, while the hare will advance two at a time. If the hare hits the end
+of the stream, then there can be no cycle. Conversely, if the hare sees the
+tortoise, then there must have been a cycle, and both the tortoise and the hare
+are in that cycle.</p>
+
+<p>Obviously, there's no way for the tortoise to meet the hare if there's no cycle
+(the hare will hit the end of the stream first). The only thing left to prove
+is that the hare and the tortoise are guaranteed to see each other if there's a
+cycle (for a more formal proof, search "Floyd cycle detection algorithm" using
+your favorite search engine). An intuitive argument is that the distance between
+the hare and the tortoise in the cycle will decrease by one every time you
+advance both. Eventually, they're guaranteed to meet up.</p>
+
+</explanation> -->
+
+
+<h1 id="optional-questions">Optional Questions</h1>
+
+
+
+<h2 id="tree-recursion">Tree Recursion</h2>
+
+<p>For a quick refresher on tree recursion, see <a href="https://cs61a.org/disc/disc04.pdf#page=3">Discussion 04</a>.</p>
+
+<blockquote><p>This question is to be done in <code>lab14.py</code>.</p></blockquote>
+
+<h3 class="question" id="q4">Q4: Num Splits</h3>
+
+<p>Given a list of numbers <code>s</code> and a target difference <code>d</code>, how many
+different ways are there to split <code>s</code> into two subsets such that the
+sum of the first is within <code>d</code> of the sum of the second? The number of
+elements in each subset can differ.</p>
+
+<p>You may assume that the elements in <code>s</code> are distinct and that <code>d</code> is always non-negative.</p>
+
+<p>Note that the order of the elements within each subset does not matter, nor does
+the order of the subsets themselves. For example, given the list <code>[1, 2, 3]</code>,
+you should not count <code>[1, 2], [3]</code> and <code>[3], [1, 2]</code> as distinct splits.</p>
+
+<blockquote><p>Hint: If the number you return is too large, you may be double-counting somewhere.
+If the result you return is off by some constant factor, it will likely be easiest
+to simply divide/subtract away that factor.</p></blockquote>
+
+
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">num_splits</span><span class="hljs-params">(s, d)</span>:</span>
+    <span class="hljs-string">"""Return the number of ways in which s can be partitioned into two
+    sublists that have sums within d of each other.
+
+    &gt;&gt;&gt; num_splits([1, 5, 4], 0)  # splits to [1, 4] and [5]
+    1
+    &gt;&gt;&gt; num_splits([6, 1, 3], 1)  # no split possible
+    0
+    &gt;&gt;&gt; num_splits([-2, 1, 3], 2) # [-2, 3], [1] and [-2, 1, 3], []
+    2
+    &gt;&gt;&gt; num_splits([1, 4, 6, 8, 2, 9, 5], 3)
+    12
+    """</span>
+<div class="alt solution-5">    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</div><div class="solution solution-5">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">difference_so_far</span><span class="hljs-params">(s, difference)</span>:</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> s:
+            <span class="hljs-keyword">if</span> abs(difference) &lt;= d:
+                <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+            <span class="hljs-keyword">else</span>:
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        element = s[<span class="hljs-number">0</span>]
+        s = s[<span class="hljs-number">1</span>:]
+        <span class="hljs-keyword">return</span> difference_so_far(s, difference + element) + difference_so_far(s, difference - element)
+    <span class="hljs-keyword">return</span> difference_so_far(s, <span class="hljs-number">0</span>)//<span class="hljs-number">2</span></div></code></pre>
+
+
+        <button id="solution-5" class="btn btn-outline btn-lg solutiontoggle solution">
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q num_splits</code></pre>
+
+
+<h2 id="linked-lists">Linked Lists</h2>
+
+<p>For a quick refresher on Linked Lists, see <a href="https://cs61a.org/lab/lab07">Lab 07</a>.</p>
+
+<blockquote><p>This question is to be done in <code>lab14_extra.py</code>.</p></blockquote>
+
+<h3 class="question" id="q5">Q5: Insert</h3>
+
+<p>Implement a function <code>insert</code> that takes a <code>Link</code>, a <code>value</code>, and an
+<code>index</code>, and inserts the <code>value</code> into the <code>Link</code> at the given <code>index</code>.
+You can assume the linked list already has at least one element. Do not
+return anything -- <code>insert</code> should mutate the linked list.</p>
+
+<blockquote><p><strong>Note</strong>: If the index is out of bounds, you can raise an <code>IndexError</code> with:</p>
+
+<pre><code class="hljs nginx"><span class="hljs-attribute">raise</span> IndexError</code></pre></blockquote>
+
+
+
+<pre><code class="hljs sql">def <span class="hljs-keyword">insert</span>(<span class="hljs-keyword">link</span>, <span class="hljs-keyword">value</span>, <span class="hljs-keyword">index</span>):
+    <span class="hljs-string">"""Insert a value into a Link at the given index.
+
+    &gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; print(link)
+    &lt;1 2 3&gt;
+    &gt;&gt;&gt; insert(link, 9001, 0)
+    &gt;&gt;&gt; print(link)
+    &lt;9001 1 2 3&gt;
+    &gt;&gt;&gt; insert(link, 100, 2)
+    &gt;&gt;&gt; print(link)
+    &lt;9001 1 100 2 3&gt;
+    &gt;&gt;&gt; insert(link, 4, 5)
+    IndexError
+    """</span>
+<div class="alt solution-6">    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</div><div class="solution solution-6">    <span class="hljs-keyword">if</span> <span class="hljs-keyword">index</span> == <span class="hljs-number">0</span>:
+        link.rest = <span class="hljs-keyword">Link</span>(link.first, link.rest)
+        link.first = <span class="hljs-keyword">value</span>
+    elif link.rest <span class="hljs-keyword">is</span> Link.empty:
+        <span class="hljs-keyword">raise</span> IndexError
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">insert</span>(link.rest, <span class="hljs-keyword">value</span>, <span class="hljs-keyword">index</span> - <span class="hljs-number">1</span>)
+
+# iterative solution
+<span class="hljs-keyword">def</span> <span class="hljs-keyword">insert</span>(<span class="hljs-keyword">link</span>, <span class="hljs-keyword">value</span>, <span class="hljs-keyword">index</span>):
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">index</span> &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> link.rest <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> Link.empty:
+        <span class="hljs-keyword">link</span> = link.rest
+        <span class="hljs-keyword">index</span> -= <span class="hljs-number">1</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">index</span> == <span class="hljs-number">0</span>:
+        link.rest = <span class="hljs-keyword">Link</span>(link.first, link.rest)
+        link.first = <span class="hljs-keyword">value</span>
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">raise</span> IndexError</div></code></pre>
+
+
+        <button id="solution-6" class="btn btn-outline btn-lg solutiontoggle solution">
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q insert</code></pre>
+
+
+<h2 id="macros">Macros</h2>
+
+<p>For a quick refresher on macros, see <a href="https://cs61a.org/disc/disc11.pdf">Discussion 11</a>.</p>
+
+<blockquote><p>This question is to be done in <code>lab14_extra.scm</code>.</p></blockquote>
+
+<h3 class="question" id="q6">Q6: Switch</h3>
+
+<p>Define the macro <code>switch</code>, which takes in an expression <code>expr</code> and a list of pairs, <code>cases</code>, where the first element of the pair
+is some <em>value</em> and the second element is a single expression. <code>switch</code> will evaluate the expression contained in the list
+of <code>cases</code> that corresponds to the value that <code>expr</code> evaluates to.</p>
+
+<pre><code class="hljs coffeescript">scm&gt; (<span class="hljs-keyword">switch</span> (+ <span class="hljs-number">1</span> <span class="hljs-number">1</span>) ((<span class="hljs-number">1</span> (<span class="hljs-built_in">print</span> <span class="hljs-string">'a))
+                      (2 (print '</span>b))
+                      (<span class="hljs-number">3</span> (<span class="hljs-built_in">print</span> <span class="hljs-string">'c))))
+b</span></code></pre>
+
+<p>You may assume that the value <code>expr</code> evaluates to is always the first element of one of the pairs in <code>cases</code>. Additionally, it
+is ok if your solution evaluates <code>expr</code> multiple times.</p>
+
+
+
+<pre><code class="hljs php">(define-macro (<span class="hljs-keyword">switch</span> expr cases)
+<div class="alt solution-7">    <span class="hljs-string">'YOUR-CODE-HERE
+</span></div><div class="solution solution-7"><span class="hljs-string">             (cons '</span>cond 
+                 (map (lambda (<span class="hljs-keyword">case</span>) (cons `(equal? ,expr (quote ,(car <span class="hljs-keyword">case</span>))) (cdr <span class="hljs-keyword">case</span>)))
+                      cases))</div>)</code></pre>
+
+
+        <button id="solution-7" class="btn btn-outline btn-lg solutiontoggle solution">
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q switch</code></pre>
+
+  </div>
+
+  <div class="col-md-3 sticky">
+    <nav class="hidden-print hidden-sm hidden-xs sidebar">
+      <ul class="nav nav-stacked noselect">
+  <li><a href="https://cs61a.org/lab/lab14/#required-questions">Required Questions</a></li>
+  <ul class="nav nav-stacked noselect">
+    <li><a href="https://cs61a.org/lab/lab14/#trees">Trees</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/lab/lab14/#q1">Q1: Prune Min</a></li>
+    </ul>
+    <li><a href="https://cs61a.org/lab/lab14/#scheme">Scheme</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/lab/lab14/#q2">Q2: Compose All</a></li>
+    </ul>
+    <li><a href="https://cs61a.org/lab/lab14/#streams">Streams</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/lab/lab14/#q3">Q3: Cycles</a></li>
+    </ul>
+  </ul>
+  <li><a href="https://cs61a.org/lab/lab14/#optional-questions">Optional Questions</a></li>
+  <ul class="nav nav-stacked noselect">
+    <li><a href="https://cs61a.org/lab/lab14/#tree-recursion">Tree Recursion</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/lab/lab14/#q4">Q4: Num Splits</a></li>
+    </ul>
+    <li><a href="https://cs61a.org/lab/lab14/#linked-lists">Linked Lists</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/lab/lab14/#q5">Q5: Insert</a></li>
+    </ul>
+    <li><a href="https://cs61a.org/lab/lab14/#macros">Macros</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/lab/lab14/#q6">Q6: Switch</a></li>
+    </ul>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="https://cs61a.org/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="https://cs61a.org/weekly.html">Weekly Schedule</a></li>
+            <li><a href="https://cs61a.org/office-hours.html">Office Hours</a></li>
+            <li><a href="https://cs61a.org/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="https://cs61a.org/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="https://cs61a.org/articles/studying.html">Studying Guide</a></li>
+            <li><a href="https://cs61a.org/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="https://cs61a.org/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="https://cs61a.org/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="https://cs61a.org/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="https://cs61a.org/articles/about.html#exams">Exams</a></li>
+            <li><a href="https://cs61a.org/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+
+  function goToId(id) {
+    var target = $(id);
+    console.log(target);
+    target.parent().show();
+    $('html,body').animate({
+      scrollTop: target.offset().top,
+    }, 100);
+    $("body").scrollspy('refresh');
+  }
+
+  if (location.hash) {
+    setTimeout(function() {
+      // window.scrollTo(0, 0);
+      if (location.hash) {
+        goToId(location.hash);
+      }
+    }, 1);
+  }
+
+  $("a").click(function(event) {
+    event.preventDefault();
+    var urlBeforeHashRegEx = new RegExp("^"+window.location.href.split("#")[0]);
+    if (/^#/.test(this.hash) && urlBeforeHashRegEx.test(this.href)) {
+      goToId(this.hash);
+      document.location.hash = this.hash;
+    } else {
+      window.open(this.href);
+    }
+  });
+</script>
+
+
+<script type="text/javascript" src="./Lab 14_ Final Review _ CS 61A Fall 2019_files/config.js.下载"></script>
+<script>
+/*
+This code is duplicated in lab-check-in.html. Doesn't work if we move it to a separate
+file because of JQuery document ready concurrency issues.
+*/
+$(function() {
+  var staging_domains = ['staging.cs61a.org', 'solutions.cs61a.org', 'localhost', '127.0.0.1'];
+  var host = window.location.hostname;
+  var staging = staging_domains.indexOf(host) != -1;
+  staging = staging || (host.endsWith('.pullrequests.cs61a.org') && !host.startsWith('last-build.'));
+
+  var after_due_date = new Date(1575791999999) < new Date();
+  var before_end_date = new Date() <= new Date(endDate);
+  var release_solutions = (staging || after_due_date) && before_end_date;
+
+  if (release_solutions) {
+    $('.solutiontoggle').css('display', 'inline-block');
+    $('.solutiontoggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  }
+  $('.alwaystoggle').css('display', 'inline-block');
+  $('.alwaystoggle').click(function() {
+    var solution_id = $(this).attr('id');
+    $('div.' + solution_id).slideToggle(600);
+  });
+});
+</script>
+
+
+  
+<div id="download_plus_animation"></div></body></html>

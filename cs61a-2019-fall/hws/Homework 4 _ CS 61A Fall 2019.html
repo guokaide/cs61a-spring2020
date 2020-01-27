@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)https://cs61a.org/hw/hw04/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="CS 61A: Structure and Interpretation of Computer Programs">
+    <meta name="keywords" content="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS">
+    <meta name="author" content="John DeNero">
+    
+    <meta name="viewport" content="width=device-width">
+
+    <script src="./Homework 4 _ CS 61A Fall 2019_files/jquery.min.js.下载"></script>
+    <script src="./Homework 4 _ CS 61A Fall 2019_files/bootstrap.min.js.下载"></script>
+    <script src="./Homework 4 _ CS 61A Fall 2019_files/highlight.min.js.下载"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="./Homework 4 _ CS 61A Fall 2019_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Homework 4 _ CS 61A Fall 2019_files/css">
+    <link rel="stylesheet" href="./Homework 4 _ CS 61A Fall 2019_files/style.css">
+    <link rel="stylesheet" href="./Homework 4 _ CS 61A Fall 2019_files/mono-blue.css">
+    <link rel="icon" href="https://cs61a.org/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="./Homework 4 _ CS 61A Fall 2019_files/hw.css">
+
+
+    <title>
+Homework 4 | CS 61A Fall 2019
+</title>
+  <script charset="utf-8" src="chrome-extension://jgphnjokjhjlcnnajmfjlacjnjkhleah/js/btype.js"></script><script type="text/javascript" charset="utf-8" src="chrome-extension://jgphnjokjhjlcnnajmfjlacjnjkhleah/js/chrome.js"></script></head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://cs61a.org/">
+            <img style="max-width:60px; margin-top: -20px;" class="logo" src="./Homework 4 _ CS 61A Fall 2019_files/logo.png">
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://cs61a.org/weekly.html">Weekly Schedule</a></li>
+            <li><a href="https://cs61a.org/office-hours.html">Office Hours</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="https://cs61a.org/hw/hw04/#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Staff
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a href="https://cs61a.org/instructor.html">Instructors</a></li>
+                <li><a href="https://cs61a.org/TAs.html">TAs</a></li>
+                <li><a href="https://cs61a.org/tutors.html">Tutors</a></li>
+                <li><a href="https://cs61a.org/academic-interns.html">Academic Interns</a></li>
+              </ul>
+            </li>
+            <li><a href="https://cs61a.org/resources.html">Resources</a></li>
+            <li><a href="https://cs61a.org/articles/about.html">Syllabus</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2019/cs61a" target="_blank">Piazza</a></li>
+            <li><a href="https://cs61a.org/extra.html">Extra</a></li>
+            <!-- <li><a href="https://scheme.cs61a.org">Scheme</a></li> -->
+            <!-- <li><a href="https://sql.cs61a.org">SQL</a></li> -->
+            <li><a href="https://code.cs61a.org/">Code</a></li>
+            <li><a href="http://tutor.cs61a.org/">Tutor</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class="row">
+  <div class="col-md-9">
+    <header>
+      <h1>
+        
+Homework 4: Data Abstraction, Trees, Nonlocal
+
+        
+        
+        <ul class="inline-block list-inline">
+          <li><a href="https://cs61a.org/hw/hw04/hw04.zip" class="label label-outline">hw04.zip</a></li>
+        </ul>
+        
+        
+      </h1>
+    </header>
+    
+
+<p><em>Due by 11:59pm on Monday, October 14</em></p>
+
+
+
+
+
+<h2>Instructions</h2>
+
+<p>Download <a href="https://cs61a.org/hw/hw04/hw04.zip">hw04.zip</a>. Inside the archive, you will find a file called
+<a href="https://cs61a.org/hw/hw04/hw04.py">hw04.py</a>, along with a copy of the <code>ok</code> autograder.</p>
+
+<p><strong>Submission:</strong> When you are done, submit with <code>python3 ok
+  --submit</code>.  You may submit more than once before the deadline; only the
+final submission will be scored. Check that you have successfully submitted
+your code on <a href="https://okpy.org/">okpy.org</a>.  See <a href="https://cs61a.org/lab/lab00#submitting-the-assignment">Lab 0</a> for more instructions on
+submitting assignments.</p>
+
+<p><strong>Using Ok:</strong> If you have any questions about using Ok, please
+refer to <a href="https://cs61a.org/articles/using-ok.html">this guide.</a>
+
+
+  </p><p><strong>Readings:</strong> You might find the following references
+  useful:</p>
+  <ul>
+  <li><a href="http://composingprograms.com/pages/22-data-abstraction.html">Section 2.2</a></li>
+  <li><a href="http://composingprograms.com/pages/23-sequences.html">Section 2.3</a></li>
+  <li><a href="http://composingprograms.com/pages/24-mutable-data.html">Section 2.4</a></li>
+</ul>
+  
+
+<p><strong>Grading:</strong> Homework is graded based on effort, not
+correctness.  However, there is no partial credit; you must show substantial
+effort on every problem to receive any points.
+<strong>This homework is out of 4 points.</strong>
+
+
+
+
+    
+</p><h1 id="required-questions">Required questions</h1>
+
+
+
+<h2 id="abstraction">Abstraction</h2>
+
+<h3 class="question" id="q1">Q1: Taxicab Distance</h3>
+
+<p>An intersection in midtown Manhattan can be identified by an avenue and a
+street, which are both indexed by positive integers. The <em>Manhattan distance</em> or
+<em>taxicab distance</em> between two intersections is the number of blocks that must
+be traversed to reach one from the other, ignoring one-way street restrictions
+and construction. For example, <a href="https://goo.gl/maps/LeXMb2vHuAB2">Times Square</a>
+is on 46th Street and 7th Avenue.
+<a href="https://goo.gl/maps/nM9ecFDD66D2">Ess-a-Bagel</a> is on 51st Street and 3rd
+Avenue. The taxicab distance between them is 9 blocks (5 blocks from 46th
+to 51st street and 4 blocks from 7th avenue to 3rd avenue). Taxicabs
+cannot cut diagonally through buildings to reach their destination!</p>
+
+<p>Implement <code>taxicab</code>, which computes the taxicab distance between two
+intersections using the following data abstraction. <em>Hint</em>: You don't need to
+know what a Cantor pairing function is; just use the abstraction.</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">intersection</span><span class="hljs-params">(st, ave)</span>:</span>
+    <span class="hljs-string">"""Represent an intersection using the Cantor pairing function."""</span>
+    <span class="hljs-keyword">return</span> (st+ave)*(st+ave+<span class="hljs-number">1</span>)//<span class="hljs-number">2</span> + ave
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">street</span><span class="hljs-params">(inter)</span>:</span>
+    <span class="hljs-keyword">return</span> w(inter) - avenue(inter)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">avenue</span><span class="hljs-params">(inter)</span>:</span>
+    <span class="hljs-keyword">return</span> inter - (w(inter) ** <span class="hljs-number">2</span> + w(inter)) // <span class="hljs-number">2</span>
+
+w = <span class="hljs-keyword">lambda</span> z: int(((<span class="hljs-number">8</span>*z+<span class="hljs-number">1</span>)**<span class="hljs-number">0.5</span><span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">taxicab</span><span class="hljs-params">(a, b)</span>:</span>
+    <span class="hljs-string">"""Return the taxicab distance between two intersections.
+
+    &gt;&gt;&gt; times_square = intersection(46, 7)
+    &gt;&gt;&gt; ess_a_bagel = intersection(51, 3)
+    &gt;&gt;&gt; taxicab(times_square, ess_a_bagel)
+    9
+    &gt;&gt;&gt; taxicab(ess_a_bagel, times_square)
+    9
+    """</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q taxicab</code></pre>
+
+
+
+<h2 id="mobiles">Mobiles</h2>
+
+
+<p><strong>Acknowledgements.</strong> This mobile example is based on
+a classic problem from Structure and Interpretation of Computer Programs,
+<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.2">Section 2.2.2</a>.</p>
+
+<blockquote><p><strong>Hint:</strong> for more information on this problem (with more pictures!) please refer to <a href="https://cs61a.org/hw/hw04/assets/mobiles.pdf">this document</a></p></blockquote>
+
+<p><img class="img-responsive center-block" src="./Homework 4 _ CS 61A Fall 2019_files/mobile.png" alt="Mobile example"></p>
+
+<p>A <a href="http://upload.wikimedia.org/wikipedia/commons/7/7e/Modern_mobile-art_mobiles_mobius.jpg">mobile</a> is a type of hanging sculpture. A binary mobile consists of two
+sides. Each side is a rod of a certain length, from which hangs either a weight
+or another mobile.</p>
+
+<p><img class="img-responsive center-block" src="./Homework 4 _ CS 61A Fall 2019_files/mobile-labelled.png" alt="Labeled Mobile example"></p>
+
+<p>We will represent a binary mobile using the data abstractions below.</p>
+
+<ul>
+  <li>A <code>mobile</code> has a left <code>side</code> and a right <code>side</code>.</li>
+  <li>A <code>side</code> has a positive length and something hanging at the end, either a <code>mobile</code> or <code>weight</code>.</li>
+  <li>A <code>weight</code> has a positive size.</li>
+</ul>
+
+<h3 class="question" id="q2">Q2: Weights</h3>
+
+<p>Implement the <code>weight</code> data abstraction by completing the <code>weight</code> constructor
+and the <code>size</code> selector so that a weight is represented using a two-element list
+where the first element is the string <code>'weight'</code>. The <code>total_weight</code> example is
+provided to demonstrate use of the mobile, side, and weight abstractions.</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mobile</span><span class="hljs-params">(left, right)</span>:</span>
+    <span class="hljs-string">"""Construct a mobile from a left side and a right side."""</span>
+    <span class="hljs-keyword">assert</span> is_side(left), <span class="hljs-string">"left must be a side"</span>
+    <span class="hljs-keyword">assert</span> is_side(right), <span class="hljs-string">"right must be a side"</span>
+    <span class="hljs-keyword">return</span> [<span class="hljs-string">'mobile'</span>, left, right]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">is_mobile</span><span class="hljs-params">(m)</span>:</span>
+    <span class="hljs-string">"""Return whether m is a mobile."""</span>
+    <span class="hljs-keyword">return</span> type(m) == list <span class="hljs-keyword">and</span> len(m) == <span class="hljs-number">3</span> <span class="hljs-keyword">and</span> m[<span class="hljs-number">0</span>] == <span class="hljs-string">'mobile'</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">left</span><span class="hljs-params">(m)</span>:</span>
+    <span class="hljs-string">"""Select the left side of a mobile."""</span>
+    <span class="hljs-keyword">assert</span> is_mobile(m), <span class="hljs-string">"must call left on a mobile"</span>
+    <span class="hljs-keyword">return</span> m[<span class="hljs-number">1</span>]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">right</span><span class="hljs-params">(m)</span>:</span>
+    <span class="hljs-string">"""Select the right side of a mobile."""</span>
+    <span class="hljs-keyword">assert</span> is_mobile(m), <span class="hljs-string">"must call right on a mobile"</span>
+    <span class="hljs-keyword">return</span> m[<span class="hljs-number">2</span>]</code></pre>
+
+<!-- hack -->
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">side</span><span class="hljs-params">(length, mobile_or_weight)</span>:</span>
+    <span class="hljs-string">"""Construct a side: a length of rod with a mobile or weight at the end."""</span>
+    <span class="hljs-keyword">assert</span> is_mobile(mobile_or_weight) <span class="hljs-keyword">or</span> is_weight(mobile_or_weight)
+    <span class="hljs-keyword">return</span> [<span class="hljs-string">'side'</span>, length, mobile_or_weight]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">is_side</span><span class="hljs-params">(s)</span>:</span>
+    <span class="hljs-string">"""Return whether s is a side."""</span>
+    <span class="hljs-keyword">return</span> type(s) == list <span class="hljs-keyword">and</span> len(s) == <span class="hljs-number">3</span> <span class="hljs-keyword">and</span> s[<span class="hljs-number">0</span>] == <span class="hljs-string">'side'</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">length</span><span class="hljs-params">(s)</span>:</span>
+    <span class="hljs-string">"""Select the length of a side."""</span>
+    <span class="hljs-keyword">assert</span> is_side(s), <span class="hljs-string">"must call length on a side"</span>
+    <span class="hljs-keyword">return</span> s[<span class="hljs-number">1</span>]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">end</span><span class="hljs-params">(s)</span>:</span>
+    <span class="hljs-string">"""Select the mobile or weight hanging at the end of a side."""</span>
+    <span class="hljs-keyword">assert</span> is_side(s), <span class="hljs-string">"must call end on a side"</span>
+    <span class="hljs-keyword">return</span> s[<span class="hljs-number">2</span>]</code></pre>
+
+<!-- hack -->
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">weight</span><span class="hljs-params">(size)</span>:</span>
+    <span class="hljs-string">"""Construct a weight of some size."""</span>
+    <span class="hljs-keyword">assert</span> size &gt; <span class="hljs-number">0</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">size</span><span class="hljs-params">(w)</span>:</span>
+    <span class="hljs-string">"""Select the size of a weight."""</span>
+    <span class="hljs-keyword">assert</span> is_weight(w), <span class="hljs-string">'must call size on a weight'</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">is_weight</span><span class="hljs-params">(w)</span>:</span>
+    <span class="hljs-string">"""Whether w is a weight."""</span>
+    <span class="hljs-keyword">return</span> type(w) == list <span class="hljs-keyword">and</span> len(w) == <span class="hljs-number">2</span> <span class="hljs-keyword">and</span> w[<span class="hljs-number">0</span>] == <span class="hljs-string">'weight'</span></code></pre>
+
+<!-- hack -->
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">total_weight</span><span class="hljs-params">(m)</span>:</span>
+    <span class="hljs-string">"""Return the total weight of m, a weight or mobile.
+
+    &gt;&gt;&gt; t, u, v = examples()
+    &gt;&gt;&gt; total_weight(t)
+    3
+    &gt;&gt;&gt; total_weight(u)
+    6
+    &gt;&gt;&gt; total_weight(v)
+    9
+    """</span>
+    <span class="hljs-keyword">if</span> is_weight(m):
+        <span class="hljs-keyword">return</span> size(m)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">assert</span> is_mobile(m), <span class="hljs-string">"must get total weight of a mobile or a weight"</span>
+        <span class="hljs-keyword">return</span> total_weight(end(left(m))) + total_weight(end(right(m)))</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q total_weight</code></pre>
+
+<h3 class="question" id="q3">Q3: Balanced</h3>
+
+<blockquote><p><strong>Hint:</strong> for more information on this problem (with more pictures!) please refer to <a href="https://cs61a.org/hw/hw04/assets/mobiles.pdf#page=3">this document</a></p></blockquote>
+
+<p>Implement the <code>balanced</code> function, which returns whether <code>m</code> is a balanced
+mobile. A mobile is balanced if two conditions are met:</p>
+
+<ol>
+  <li>The torque applied by its left side is equal to that applied by its right
+  side. Torque of the left side is the length of the left rod multiplied by the
+  total weight hanging from that rod. Likewise for the right.</li>
+  <li>Each of the mobiles hanging at the end of its sides is balanced.</li>
+</ol>
+
+<p><em>Hint:</em> You may find it helpful to assume that weights themselves are balanced.</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">balanced</span><span class="hljs-params">(m)</span>:</span>
+    <span class="hljs-string">"""Return whether m is balanced.
+
+    &gt;&gt;&gt; t, u, v = examples()
+    &gt;&gt;&gt; balanced(t)
+    True
+    &gt;&gt;&gt; balanced(v)
+    True
+    &gt;&gt;&gt; w = mobile(side(3, t), side(2, u))
+    &gt;&gt;&gt; balanced(w)
+    False
+    &gt;&gt;&gt; balanced(mobile(side(1, v), side(1, w)))
+    False
+    &gt;&gt;&gt; balanced(mobile(side(1, w), side(1, v)))
+    False
+    """</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q balanced</code></pre>
+
+
+
+<h3 class="question" id="q4">Q4: Totals</h3>
+
+<p>Implement <code>totals_tree</code>, which takes a <code>mobile</code> (or <code>weight</code>) and returns a
+<code>tree</code> whose root is its total weight and whose branches are trees for the ends
+of the sides.</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">totals_tree</span><span class="hljs-params">(m)</span>:</span>
+    <span class="hljs-string">"""Return a tree representing the mobile with its total weight at the root.
+
+    &gt;&gt;&gt; t, u, v = examples()
+    &gt;&gt;&gt; print_tree(totals_tree(t))
+    3
+      2
+      1
+    &gt;&gt;&gt; print_tree(totals_tree(u))
+    6
+      1
+      5
+        3
+        2
+    &gt;&gt;&gt; print_tree(totals_tree(v))
+    9
+      3
+        2
+        1
+      6
+        1
+        5
+          3
+          2
+    """</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q totals_tree</code></pre>
+
+
+<h2 id="trees">Trees</h2>
+
+<h3 class="question" id="q5">Q5: Replace Leaf</h3>
+
+<p>Define <code>replace_leaf</code>, which takes a tree <code>t</code>, a value <code>old</code>, and a value <code>new</code>.
+<code>replace_leaf</code> returns a new tree that's the same as <code>t</code> except that every leaf
+value equal to <code>old</code>  has been replaced with <code>new</code>.</p>
+
+<solution>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">replace_leaf</span><span class="hljs-params">(t, old, new)</span>:</span>
+    <span class="hljs-string">"""Returns a new tree where every leaf value equal to old has
+    been replaced with new.
+
+    &gt;&gt;&gt; yggdrasil = tree('odin',
+    ...                  [tree('balder',
+    ...                        [tree('thor'),
+    ...                         tree('freya')]),
+    ...                   tree('frigg',
+    ...                        [tree('thor')]),
+    ...                   tree('thor',
+    ...                        [tree('sif'),
+    ...                         tree('thor')]),
+    ...                   tree('thor')])
+    &gt;&gt;&gt; laerad = copy_tree(yggdrasil) # copy yggdrasil for testing purposes
+    &gt;&gt;&gt; print_tree(replace_leaf(yggdrasil, 'thor', 'freya'))
+    odin
+      balder
+        freya
+        freya
+      frigg
+        freya
+      thor
+        sif
+        freya
+      freya
+    &gt;&gt;&gt; laerad == yggdrasil # Make sure original tree is unmodified
+    True
+    """</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q replace_leaf</code></pre>
+
+<!--
+
+-->
+
+
+<h2 id="nonlocal">Nonlocal</h2>
+
+<h3 class="question" id="q6">Q6: Next Fibonacci</h3>
+
+<p>Write a function <code>make_fib</code> that returns a function that returns the
+next Fibonacci number each time it is called. (The Fibonacci sequence begins with 0
+and then 1, after which each element is the sum of the preceding two.)
+Use a <code>nonlocal</code> statement!</p>
+
+<solution>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_fib</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">"""Returns a function that returns the next Fibonacci number
+    every time it is called.
+
+    &gt;&gt;&gt; fib = make_fib()
+    &gt;&gt;&gt; fib()
+    0
+    &gt;&gt;&gt; fib()
+    1
+    &gt;&gt;&gt; fib()
+    1
+    &gt;&gt;&gt; fib()
+    2
+    &gt;&gt;&gt; fib()
+    3
+    &gt;&gt;&gt; fib2 = make_fib()
+    &gt;&gt;&gt; fib() + sum([fib2() for _ in range(5)])
+    12
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; # Do not use lists in your implementation
+    &gt;&gt;&gt; check(this_file, 'make_fib', ['List'])
+    True
+    """</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_fib</code></pre>
+
+
+<h3 class="question" id="q7">Q7: Password Protected Account</h3>
+
+<p>In lecture, we saw how to use functions to create mutable objects.
+Here, for example, is the function <code>make_withdraw</code> which produces a
+function that can withdraw money from an account:</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_withdraw</span><span class="hljs-params">(balance)</span>:</span>
+    <span class="hljs-string">"""Return a withdraw function with BALANCE as its starting balance.
+    &gt;&gt;&gt; withdraw = make_withdraw(1000)
+    &gt;&gt;&gt; withdraw(100)
+    900
+    &gt;&gt;&gt; withdraw(100)
+    800
+    &gt;&gt;&gt; withdraw(900)
+    'Insufficient funds'
+    """</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">withdraw</span><span class="hljs-params">(amount)</span>:</span>
+        <span class="hljs-keyword">nonlocal</span> balance
+        <span class="hljs-keyword">if</span> amount &gt; balance:
+           <span class="hljs-keyword">return</span> <span class="hljs-string">'Insufficient funds'</span>
+        balance = balance - amount
+        <span class="hljs-keyword">return</span> balance
+    <span class="hljs-keyword">return</span> withdraw</code></pre>
+
+<p>Write a version of the <code>make_withdraw</code> function that returns
+password-protected withdraw functions. That is, <code>make_withdraw</code> should
+take a password argument (a string) in addition to an initial balance.
+The returned function should take two arguments: an amount to withdraw
+and a password.</p>
+
+<p>A password-protected <code>withdraw</code> function should only process
+withdrawals that include a password that matches the original.  Upon
+receiving an incorrect password, the function should:</p>
+
+<ol>
+  <li>Store that incorrect password in a list, and</li>
+  <li>Return the string 'Incorrect password'.</li>
+</ol>
+
+<p>If a withdraw function has been called three times with incorrect
+passwords <code>&lt;p1&gt;</code>, <code>&lt;p2&gt;</code>, and <code>&lt;p3&gt;</code>, then it is locked.  All subsequent
+calls to the function should return:</p>
+
+<pre><code class="hljs xml">"Your account is locked. Attempts: [<span class="hljs-tag">&lt;<span class="hljs-name">p1</span>&gt;</span>, <span class="hljs-tag">&lt;<span class="hljs-name">p2</span>&gt;</span>, <span class="hljs-tag">&lt;<span class="hljs-name">p3</span>&gt;</span>]"</code></pre>
+
+<p>The incorrect passwords may be the same or different:</p>
+
+<solution>
+
+<pre><code class="hljs ruby"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_withdraw</span><span class="hljs-params">(balance, password)</span></span>:
+    <span class="hljs-string">""</span><span class="hljs-string">"Return a password-protected withdraw function.
+
+    &gt;&gt;&gt; w = make_withdraw(100, 'hax0r')
+    &gt;&gt;&gt; w(25, 'hax0r')
+    75
+    &gt;&gt;&gt; error = w(90, 'hax0r')
+    &gt;&gt;&gt; error
+    'Insufficient funds'
+    &gt;&gt;&gt; error = w(25, 'hwat')
+    &gt;&gt;&gt; error
+    'Incorrect password'
+    &gt;&gt;&gt; new_bal = w(25, 'hax0r')
+    &gt;&gt;&gt; new_bal
+    50
+    &gt;&gt;&gt; w(75, 'a')
+    'Incorrect password'
+    &gt;&gt;&gt; w(10, 'hax0r')
+    40
+    &gt;&gt;&gt; w(20, 'n00b')
+    'Incorrect password'
+    &gt;&gt;&gt; w(10, 'hax0r')
+    "</span>Your account is locked. <span class="hljs-symbol">Attempts:</span> [<span class="hljs-string">'hwat'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'n00b'</span>]<span class="hljs-string">"
+    &gt;&gt;&gt; w(10, 'l33t')
+    "</span>Your account is locked. <span class="hljs-symbol">Attempts:</span> [<span class="hljs-string">'hwat'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'n00b'</span>]<span class="hljs-string">"
+    &gt;&gt;&gt; type(w(10, 'l33t')) == str
+    True
+    "</span><span class="hljs-string">""</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_withdraw</code></pre>
+
+
+<h3 class="question" id="q8">Q8: Joint Account</h3>
+
+<p>Suppose that our banking system requires the ability to make joint
+accounts.  Define a function <code>make_joint</code> that takes three arguments.</p>
+
+<ol>
+  <li>A password-protected <code>withdraw</code> function,</li>
+  <li>The password with which that <code>withdraw</code> function was defined, and</li>
+  <li>A new password that can also access the original account.</li>
+</ol>
+
+<p>The <code>make_joint</code> function returns a <code>withdraw</code> function that provides
+additional access to the original account using <em>either</em> the new or old
+password. Both functions draw from the same balance. Incorrect
+passwords provided to either function will be stored and cause the
+functions to be locked after three wrong attempts.</p>
+
+<p><em>Hint</em>: The solution is short (less than 10 lines) and contains no string
+literals!  The key is to call <code>withdraw</code> with the right password and amount,
+then interpret the result.  You may assume that all failed attempts to withdraw
+will return some string (for incorrect passwords, locked accounts, or
+insufficient funds), while successful withdrawals will return a number.</p>
+
+<p>Use <code>type(value) == str</code> to test if some <code>value</code> is a string:</p>
+
+<solution>
+
+<pre><code class="hljs ruby"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_joint</span><span class="hljs-params">(withdraw, old_password, new_password)</span></span>:
+    <span class="hljs-string">""</span><span class="hljs-string">"Return a password-protected withdraw function that has joint access to
+    the balance of withdraw.
+
+    &gt;&gt;&gt; w = make_withdraw(100, 'hax0r')
+    &gt;&gt;&gt; w(25, 'hax0r')
+    75
+    &gt;&gt;&gt; make_joint(w, 'my', 'secret')
+    'Incorrect password'
+    &gt;&gt;&gt; j = make_joint(w, 'hax0r', 'secret')
+    &gt;&gt;&gt; w(25, 'secret')
+    'Incorrect password'
+    &gt;&gt;&gt; j(25, 'secret')
+    50
+    &gt;&gt;&gt; j(25, 'hax0r')
+    25
+    &gt;&gt;&gt; j(100, 'secret')
+    'Insufficient funds'
+
+    &gt;&gt;&gt; j2 = make_joint(j, 'secret', 'code')
+    &gt;&gt;&gt; j2(5, 'code')
+    20
+    &gt;&gt;&gt; j2(5, 'secret')
+    15
+    &gt;&gt;&gt; j2(5, 'hax0r')
+    10
+
+    &gt;&gt;&gt; j2(25, 'password')
+    'Incorrect password'
+    &gt;&gt;&gt; j2(5, 'secret')
+    "</span>Your account is locked. <span class="hljs-symbol">Attempts:</span> [<span class="hljs-string">'my'</span>, <span class="hljs-string">'secret'</span>, <span class="hljs-string">'password'</span>]<span class="hljs-string">"
+    &gt;&gt;&gt; j(5, 'secret')
+    "</span>Your account is locked. <span class="hljs-symbol">Attempts:</span> [<span class="hljs-string">'my'</span>, <span class="hljs-string">'secret'</span>, <span class="hljs-string">'password'</span>]<span class="hljs-string">"
+    &gt;&gt;&gt; w(5, 'hax0r')
+    "</span>Your account is locked. <span class="hljs-symbol">Attempts:</span> [<span class="hljs-string">'my'</span>, <span class="hljs-string">'secret'</span>, <span class="hljs-string">'password'</span>]<span class="hljs-string">"
+    &gt;&gt;&gt; make_joint(w, 'hax0r', 'hello')
+    "</span>Your account is locked. <span class="hljs-symbol">Attempts:</span> [<span class="hljs-string">'my'</span>, <span class="hljs-string">'secret'</span>, <span class="hljs-string">'password'</span>]<span class="hljs-string">"
+    "</span><span class="hljs-string">""</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_joint</code></pre>
+
+
+
+
+<h1 id="extra-questions">Extra Questions</h1>
+
+
+<h3 class="question" id="q9">Q9: Interval Abstraction</h3>
+
+<p>Alyssa's program is incomplete because she has not specified the implementation
+of the interval abstraction. She has implemented the constructor for you; fill
+in the implementation of the selectors.</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">interval</span><span class="hljs-params">(a, b)</span>:</span>
+    <span class="hljs-string">"""Construct an interval from a to b."""</span>
+    <span class="hljs-keyword">return</span> [a, b]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lower_bound</span><span class="hljs-params">(x)</span>:</span>
+    <span class="hljs-string">"""Return the lower bound of interval x."""</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upper_bound</span><span class="hljs-params">(x)</span>:</span>
+    <span class="hljs-string">"""Return the upper bound of interval x."""</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q interval -u
+python3 ok -q interval</code></pre>
+
+<p>Louis Reasoner has also provided an implementation of interval
+multiplication. Beware: there are some data abstraction violations, so help him
+fix his code before someone <a href="https://youtu.be/QwoghxwETng">sets it on fire</a>.</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mul_interval</span><span class="hljs-params">(x, y)</span>:</span>
+    <span class="hljs-string">"""Return the interval that contains the product of any value in x and any
+    value in y."""</span>
+    p1 = x[<span class="hljs-number">0</span>] * y[<span class="hljs-number">0</span>]
+    p2 = x[<span class="hljs-number">0</span>] * y[<span class="hljs-number">1</span>]
+    p3 = x[<span class="hljs-number">1</span>] * y[<span class="hljs-number">0</span>]
+    p4 = x[<span class="hljs-number">1</span>] * y[<span class="hljs-number">1</span>]
+    <span class="hljs-keyword">return</span> [min(p1, p2, p3, p4), max(p1, p2, p3, p4)]</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q mul_interval -u
+python3 ok -q mul_interval</code></pre>
+
+
+
+<h3 class="question" id="q10">Q10: Sub Interval</h3>
+
+<p>Using reasoning analogous to Alyssa's, define a subtraction function for
+intervals. Try to reuse functions that have already been implemented if you
+find yourself repeating code.</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sub_interval</span><span class="hljs-params">(x, y)</span>:</span>
+    <span class="hljs-string">"""Return the interval that contains the difference between any value in x
+    and any value in y."""</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q sub_interval -u
+python3 ok -q sub_interval</code></pre>
+
+
+
+<h3 class="question" id="q11">Q11: Div Interval</h3>
+
+<p>Alyssa implements division below by multiplying by the reciprocal of
+<code>y</code>. Ben Bitdiddle, an expert systems programmer, looks over Alyssa's
+shoulder and comments that it is not clear what it means to divide by
+an interval that spans zero. Add an <code>assert</code> statement to Alyssa's code
+to ensure that no such interval is used as a divisor:</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">div_interval</span><span class="hljs-params">(x, y)</span>:</span>
+    <span class="hljs-string">"""Return the interval that contains the quotient of any value in x divided by
+    any value in y. Division is implemented as the multiplication of x by the
+    reciprocal of y."""</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+    reciprocal_y = interval(<span class="hljs-number">1</span>/upper_bound(y), <span class="hljs-number">1</span>/lower_bound(y))
+    <span class="hljs-keyword">return</span> mul_interval(x, reciprocal_y)</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q div_interval -u
+python3 ok -q div_interval</code></pre>
+
+
+
+<h3 class="question" id="q12">Q12: Multiple References</h3>
+
+<p>Eva Lu Ator, another user, has also noticed the different intervals
+computed by different but algebraically equivalent expressions. She
+says that the problem is multiple references to the same interval.</p>
+
+<p>The Multiple References Problem: a formula to compute with intervals
+using Alyssa's system will produce tighter error bounds if it can be
+written in such a form that no variable that represents an uncertain
+number is repeated.</p>
+
+<p>Thus, she says, <code>par2</code> is a better program for parallel resistances
+than <code>par1</code>. Is she right? Why? Write a function that returns a string
+containing a written explanation of your answer:</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">multiple_references_explanation</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"""The multiple reference problem..."""</span>
+</code></pre>
+
+
+
+<h3 class="question" id="q13">Q13: Quadratic</h3>
+
+<p>Write a function <code>quadratic</code> that returns the interval of all values
+<code>f(t)</code> such that <code>t</code> is in the argument interval <code>x</code> and <code>f(t)</code> is a
+<a href="http://en.wikipedia.org/wiki/Quadratic_function">quadratic function</a>:</p>
+
+<pre><code class="hljs markdown">f(t) = a<span class="hljs-emphasis">*t*</span>t + b*t + c</code></pre>
+
+<p>Make sure that your implementation returns the smallest such interval,
+one that does not suffer from the multiple references problem.</p>
+
+<p><em>Hint</em>: the derivative <code>f'(t) = 2*a*t + b</code>, and so the extreme
+point of the quadratic is <code>-b/(2*a)</code>:</p>
+
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">quadratic</span><span class="hljs-params">(x, a, b, c)</span>:</span>
+    <span class="hljs-string">"""Return the interval that is the range of the quadratic defined by
+    coefficients a, b, and c, for domain interval x.
+
+    &gt;&gt;&gt; str_interval(quadratic(interval(0, 2), -2, 3, -1))
+    '-3 to 0.125'
+    &gt;&gt;&gt; str_interval(quadratic(interval(1, 3), 2, -3, 1))
+    '0 to 10'
+    """</span>
+    <span class="hljs-string">"*** YOUR CODE HERE ***"</span>
+</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q quadratic</code></pre>
+
+
+
+<script>
+/*
+This code is duplicated in lab-check-in.html. Doesn't work if we move it to a separate
+file because of JQuery document ready concurrency issues.
+*/
+$(function() {
+  $('.alwaystoggle').css('display', 'inline-block');
+  $('.alwaystoggle').click(function() {
+    var solution_id = $(this).attr('id');
+    $('div.' + solution_id).slideToggle(600);
+  });
+});
+</script>
+
+
+  </div>
+
+  <div class="col-md-3 sticky">
+    <nav class="hidden-print hidden-sm hidden-xs sidebar">
+      <ul class="nav nav-stacked noselect">
+  <li><a href="https://cs61a.org/hw/hw04/#instructions">Instructions</a></li>
+  <li><a href="https://cs61a.org/hw/hw04/#required-questions">Required questions</a></li>
+  <ul class="nav nav-stacked noselect">
+    <li><a href="https://cs61a.org/hw/hw04/#abstraction">Abstraction</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/hw/hw04/#q1">Q1: Taxicab Distance</a></li>
+    </ul>
+    <li><a href="https://cs61a.org/hw/hw04/#mobiles">Mobiles</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/hw/hw04/#q2">Q2: Weights</a></li>
+      <li><a href="https://cs61a.org/hw/hw04/#q3">Q3: Balanced</a></li>
+      <li><a href="https://cs61a.org/hw/hw04/#q4">Q4: Totals</a></li>
+    </ul>
+    <li><a href="https://cs61a.org/hw/hw04/#trees">Trees</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/hw/hw04/#q5">Q5: Replace Leaf</a></li>
+    </ul>
+    <li><a href="https://cs61a.org/hw/hw04/#nonlocal">Nonlocal</a></li>
+    <ul class="nav nav-stacked noselect">
+      <li><a href="https://cs61a.org/hw/hw04/#q6">Q6: Next Fibonacci</a></li>
+      <li><a href="https://cs61a.org/hw/hw04/#q7">Q7: Password Protected Account</a></li>
+      <li><a href="https://cs61a.org/hw/hw04/#q8">Q8: Joint Account</a></li>
+    </ul>
+  </ul>
+  <li><a href="https://cs61a.org/hw/hw04/#extra-questions">Extra Questions</a></li>
+  <ul class="nav nav-stacked noselect">
+    <li><a href="https://cs61a.org/hw/hw04/#q9">Q9: Interval Abstraction</a></li>
+    <li><a href="https://cs61a.org/hw/hw04/#q10">Q10: Sub Interval</a></li>
+    <li><a href="https://cs61a.org/hw/hw04/#q11">Q11: Div Interval</a></li>
+    <li><a href="https://cs61a.org/hw/hw04/#q12">Q12: Multiple References</a></li>
+    <li><a href="https://cs61a.org/hw/hw04/#q13">Q13: Quadratic</a></li>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="https://cs61a.org/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="https://cs61a.org/weekly.html">Weekly Schedule</a></li>
+            <li><a href="https://cs61a.org/office-hours.html">Office Hours</a></li>
+            <li><a href="https://cs61a.org/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="https://cs61a.org/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="https://cs61a.org/articles/studying.html">Studying Guide</a></li>
+            <li><a href="https://cs61a.org/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="https://cs61a.org/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="https://cs61a.org/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="https://cs61a.org/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="https://cs61a.org/articles/about.html#exams">Exams</a></li>
+            <li><a href="https://cs61a.org/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+
+  function goToId(id) {
+    var target = $(id);
+    console.log(target);
+    target.parent().show();
+    $('html,body').animate({
+      scrollTop: target.offset().top,
+    }, 100);
+    $("body").scrollspy('refresh');
+  }
+
+  if (location.hash) {
+    setTimeout(function() {
+      // window.scrollTo(0, 0);
+      if (location.hash) {
+        goToId(location.hash);
+      }
+    }, 1);
+  }
+
+  $("a").click(function(event) {
+    event.preventDefault();
+    var urlBeforeHashRegEx = new RegExp("^"+window.location.href.split("#")[0]);
+    if (/^#/.test(this.hash) && urlBeforeHashRegEx.test(this.href)) {
+      goToId(this.hash);
+      document.location.hash = this.hash;
+    } else {
+      window.open(this.href);
+    }
+  });
+</script>
+
+  
+</body></html>
